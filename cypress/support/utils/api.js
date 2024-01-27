@@ -1,12 +1,14 @@
-export const apiUrl = "/v1/graphql";
+import { generateRandomStringOfXChars } from "./randomUtils"
 
 export function getAccessToken() {
     cy.request(
         {
-            url: '',
+            url: '/users',
             method: 'POST',
             body: {
-                "username": "",
+                "firstName": "nermin",
+                "lastName": "sahman",
+                "email":  generateRandomStringOfXChars(10) + "@mail.com",
                 "password": ""
             }
         }

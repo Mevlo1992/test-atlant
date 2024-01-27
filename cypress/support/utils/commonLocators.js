@@ -1,11 +1,18 @@
 export class CommonLocators {
-    button = 'div[role="button"]';  
-    typeButton = 'button[type="button"]'
-    option = 'li[role="option"]';
-    windowElement = 'div[role="presentation"]'
-    dropdownElement = 'div[aria-haspopup="listbox"]'
-    checkbox = 'input[type="checkbox"]'
-    typeTextInput = 'fieldset[class^="MuiOutlinedInput-notchedOutline"]'
-    searchInput= 'input[id="outlined-search"]'
-    notiSnackbarText = 'div[id="notistack-snackbar"]'
+    submitBtn = 'button[id="submit"]'
+    cancelBtn = 'button[id="cancel"]'
+    logoutBtn = 'button[id="logout"]'
+
+    FirstNameInputField = 'input[id="firstName"]'
+   LastNameInputField = 'input[id="lastName"]'
+    dateOfBirthInputField = 'input[id="birthdate"]'
+    emailInputField = 'input[id="email"]'
+    phoneInputField = 'input[id="phone"]'
+    address1InputField = 'input[id="street1"]'
+    address2InputField = 'input[id="street2"]'
+    cityInputField = 'input[id="city"]'
+    stateInputField = 'input[id="stateProvince"]'
+    postalCodeInputField = 'input[id="postalCode"]'
+    countryInputField = 'input[id="country"]'
+
 }
