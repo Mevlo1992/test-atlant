@@ -1,14 +1,10 @@
 import { CommonActions } from "../support/utils/commonActions" 
-import { CommonLocators } from "../support/utils/commonLocators"
 import { generateRandomStringOfXChars } from "../support/utils/randomUtils";
-import { loginPageLocators } from "../pages/loginPage/loginPageLocators"
 import { contactListPageLocators } from "../pages/contactListPage/contactListPageLocators";
 import { contactDetailsPageLocators } from "../pages/contactDetailsPage/contactDetailsPageLocators";
 
 
 const commonActions = new CommonActions
-const loginLocators = new loginPageLocators
-const commonLocators = new CommonLocators
 const contactLocators = new contactListPageLocators
 const contactDetailsLocators = new contactDetailsPageLocators
 
