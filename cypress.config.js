@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  headed:"true",
   fixturesFolder: 'cypress/fixtures',
   videosFolder: 'cypress/videos',
   screenshotsFolder: 'cypress/screenshots',

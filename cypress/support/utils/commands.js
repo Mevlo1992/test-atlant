@@ -25,61 +25,72 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { CommonActions } from "./commonActions"
-import { CommonLocators } from "./commonLocators"
-import { textData } from "../../fixtures/constants"
-import { locatorTextData } from "../../fixtures/constants"
-import { generateRandomStringOfXChars, getRandomLargeNumberOfXChars } from "./randomUtils"
 import { contactDetailsPageLocators } from "../../pages/contactDetailsPage/contactDetailsPageLocators"
 import { contactListPageLocators } from "../../pages/contactListPage/contactListPageLocators"
 import { loginPageLocators } from "../../pages/loginPage/loginPageLocators"
-import common from "mocha/lib/interfaces/common"
+import { CommonLocators } from "./commonLocators"
+
 
 const commonActions = new CommonActions
 const commonLocators = new CommonLocators
 const contactDetails = new contactDetailsPageLocators
 const contactList = new contactListPageLocators
-const login = new loginPageLocators
+const loginPage = new loginPageLocators
 
 
 Cypress.Commands.add('addNewUserAndLogin', (email) => {
     cy.visit('')
-    commonActions.clickElementAtIndex(login.signUpBtn)
-    commonActions.populateInputAtIndex(commonLocators.FirstNameInputField, Cypress.env('userFirstName'))
-    commonActions.populateInputAtIndex(commonLocators.LastNameInputField, Cypress.env('userLastName'))
-    commonActions.populateInputAtIndex(commonLocators.emailInputField, userEmail)
-    commonActions.populateInputAtIndex(login.passwordInputField, Cypress.env('password'))
+    commonActions.clickElementAtIndex(loginPage.signUpBtn)
+    commonActions.populateInputAtIndex(commonLocators.firstNameInputField, Cypress.env('userFirstName'))
+    commonActions.populateInputAtIndex(loginPage.lastNameInputField, Cypress.env('userLastName'), 0)
+    commonActions.populateInputAtIndex(commonLocators.emailInputField, email)
+    commonActions.populateInputAtIndex(loginPage.passwordInputField, Cypress.env('password'))
     commonActions.clickElementAtIndex(commonLocators.submitBtn)
     commonActions.clickElementAtIndex(contactList.logoutBtn)
     cy.wait(2000)
     commonActions.populateInputAtIndex(commonLocators.emailInputField, email)
-    commonActions.populateInputAtIndex(login.passwordInputField, Cypress.env('password'))
+    commonActions.populateInputAtIndex(loginPage.passwordInputField, Cypress.env('password'))
     commonActions.clickElementAtIndex(commonLocators.submitBtn)
 
-})
-
-Cypress.Commands.add('logout', () => {
-    userButton().click()
-    logoutButton().click()
 })
 
 Cypress.Commands.add('addNewUser', (userEmail) => {
     cy.visit('')
-    commonActions.clickElementAtIndex(login.signUpBtn)
-    commonActions.populateInputAtIndex(commonLocators.FirstNameInputField, Cypress.env('userFirstName'))
-    commonActions.populateInputAtIndex(commonLocators.LastNameInputField, Cypress.env('userLastName'))
+    commonActions.clickElementAtIndex(loginPage.signUpBtn)
+    commonActions.populateInputAtIndex(commonLocators.firstNameInputField, Cypress.env('userFirstName'))
+    commonActions.populateInputAtIndex(commonLocators.lastNameInputField, Cypress.env('userLastName'))
     commonActions.populateInputAtIndex(commonLocators.emailInputField, userEmail)
-    commonActions.populateInputAtIndex(login.passwordInputField, Cypress.env('password'))
+    commonActions.populateInputAtIndex(loginPage.passwordInputField, Cypress.env('password'))
     commonActions.clickElementAtIndex(commonLocators.submitBtn)
     commonActions.clickElementAtIndex(contactList.logoutBtn)
 })
 
-Cypress.Commands.add('addNewContact', (contactLastName) => {
-
+Cypress.Commands.add('addNewContact', (contactFirstName, contactLastName) => {
+    
+    cy.wait(2000)
     commonActions.clickElementAtIndex(contactList.addNewContactBtn)
-    commonActions.populateInputAtIndex(commonLocators.FirstNameInputField, "contact")
-    commonActions.populateInputAtIndex(commonLocators.LastNameInputField, contactLastName)
+    commonActions.populateInputAtIndex(commonLocators.firstNameInputField, contactFirstName)
+    commonActions.populateInputAtIndex(commonLocators.lastNameInputField, contactLastName)
     commonActions.populateInputAtIndex(commonLocators.dateOfBirthInputField, "1990-01-01")
-    commonActions.populateInputAtIndex(commonActions.emailInputField, "contact@mail.com")
+    commonActions.populateInputAtIndex(commonLocators.emailInputField, "contact@mail.com")
+    commonActions.populateInputAtIndex(commonLocators.phoneInputField, "1234567890")
+    commonActions.populateInputAtIndex(commonLocators.address1InputField, "test address 1")
+    commonActions.populateInputAtIndex(commonLocators.address2InputField, "test address 2")
+    commonActions.populateInputAtIndex(commonLocators.cityInputField, "New York")
+    commonActions.populateInputAtIndex(commonLocators.stateInputField, "New York")
+    commonActions.populateInputAtIndex(commonLocators.postalCodeInputField, "10001")
+    commonActions.populateInputAtIndex(commonLocators.countryInputField, "United States")
+    commonActions.clickElementAtIndex(commonLocators.submitBtn)
+})
+
+Cypress.Commands.add('editExistingContact', (contactFirstName, contactLastName) => {
+
+    cy.wait(2000)
+    commonActions.clickElementAtIndex(contactDetails.editContactBtn)
+    commonActions.populateInputAtIndex(commonLocators.firstNameInputField, contactFirstName)
+    commonActions.populateInputAtIndex(commonLocators.lastNameInputField, contactLastName)
+    commonActions.populateInputAtIndex(commonLocators.dateOfBirthInputField, "1990-01-01")
+    commonActions.populateInputAtIndex(commonLocators.emailInputField, "contact@mail.com")
     commonActions.populateInputAtIndex(commonLocators.phoneInputField, "1234567890")
     commonActions.populateInputAtIndex(commonLocators.address1InputField, "test address 1")
     commonActions.populateInputAtIndex(commonLocators.address2InputField, "test address 2")

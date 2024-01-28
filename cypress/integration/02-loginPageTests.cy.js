@@ -1,7 +1,5 @@
 import { CommonActions } from "../support/utils/commonActions" 
-import { locatorTextData } from "../fixtures/constants"
 import { CommonLocators } from "../support/utils/commonLocators"
-import { textData } from "../fixtures/constants"
 import { generateRandomStringOfXChars } from "../support/utils/randomUtils"
 import { loginPageLocators } from "../pages/loginPage/loginPageLocators"
 
@@ -18,7 +16,7 @@ describe('Login page tests', () =>{
 
 
 
-    it.only('Verify that the user cannot log in with invalid credentials', () => {
+    it('Verify that the user cannot log in with invalid credentials', () => {
         cy.visit('')
         commonActions.populateInputAtIndex(loginLocators.emailInputField, generateRandomStringOfXChars(5))
         commonActions.populateInputAtIndex(loginLocators.passwordInputField, generateRandomStringOfXChars(7))

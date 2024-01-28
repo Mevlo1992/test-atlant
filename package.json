@@ -16,11 +16,11 @@
   },
   "scripts": {
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run --browser chrome",
+    "cy:run": "npx cypress run --headed --browser chrome ",
     "cy:run_api": "npx cypress run --spec cypress/integration/api-spec.cy.js",
     "test:e2e:chrome": "npx cypress run --browser chrome --spec cypress/integration/**/*.cy.js",
     "test:smoke": "npx cypress run --browser chrome --env grepTags=smoke",
     "test:regression": "npx cypress run --browser chrome --env grepTags=regression",
-    "test:single:spec": "npx cypress run --browser chrome --spec cypress/integration/00-overviewPageTests.cy.js"
+    "test:single:spec": "npx cypress run --browser chrome --spec"
   }
 }

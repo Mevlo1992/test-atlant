@@ -1,6 +1,6 @@
 import { generateRandomStringOfXChars } from "../support/utils/randomUtils";
 
-describe('Users Flow', () => {
+describe('API Users Flow', () => {
     let bearerToken;
     let userEmail;
 
@@ -160,7 +160,7 @@ describe('Users Flow', () => {
     });
   });
 
-  describe ('Contacts Flow', () => {
+  describe ('API Contacts Flow', () => {
     /// <reference types="cypress" />
 
   let bearerToken;

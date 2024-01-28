@@ -1,10 +1,11 @@
 export class CommonLocators {
+
     submitBtn = 'button[id="submit"]'
     cancelBtn = 'button[id="cancel"]'
     logoutBtn = 'button[id="logout"]'
 
-    FirstNameInputField = 'input[id="firstName"]'
-   LastNameInputField = 'input[id="lastName"]'
+    firstNameInputField = 'input[id="firstName"]'
+    lastNameInputField = 'input[id="lastName"]'
     dateOfBirthInputField = 'input[id="birthdate"]'
     emailInputField = 'input[id="email"]'
     phoneInputField = 'input[id="phone"]'
